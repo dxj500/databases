@@ -12,5 +12,12 @@ result = DatabaseConnection.exec_params(sql, [])
 
 # Print out each record from the result set .
 result.each do |record|
-  p record
+  p record.values
 end
+album_repository = AlbumRepository.new
+# Get the album with artist id 2
+album = album_repository.find(2)
+
+puts album.id
+puts album.title
+puts album.release_year

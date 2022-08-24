@@ -120,6 +120,16 @@ class AlbumRepository
 ​
     # Returns an array of Album objects.
   end
+
+  #select a single album record
+  #given its id in arguemnt (a number)
+  def find(id)
+    # executes the sql
+    # SELECT id, title, release_year, artist_id FROM albums WHERE id = $1
+
+    #returns a single album object
+  end
+
 ​
 end
 ```
@@ -146,15 +156,32 @@ albums.first.release_year # => 1997
 albums.first.artist_id # => 1
 ​
 # 2
-# Get a single student
+# Get all albums where there are no albums in the db
+
+repo = AlbumRepository.new
+albums = repo.all # => []
+
+# 3
+# Get a single album from the db
+
+repo = AlbumRepository.new
+album = repo.find(1)
+
+album.title # => 'The Colour and the Shape'
+album.release_year # => 1997
+album.artist_id # => 1
+
+# 4
+# Get a single album from the db
+
+repo = AlbumRepository.new
+album = repo.find(2)
+
+album.title # => 'Chloe and the Next 20th Century'
+album.release_year # => 2022
+album.artist_id # => 2
 ​
-repo = StudentRepository.new
-​
-student = repo.find(1)
-​
-student.id # =>  1
-student.name # =>  'David'
-student.cohort_name # =>  'April 2022'
+
 ​
 # Add more examples for each method
 ```

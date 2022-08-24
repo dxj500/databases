@@ -22,4 +22,24 @@ RSpec.describe AlbumRepository do
     expect(albums.first.release_year).to eq '1997' # => 1997
     expect(albums.first.artist_id).to eq '1' # => 1
   end
+
+  it "returns the album the colour and the shape" do
+    repo = AlbumRepository.new
+    album = repo.find(1)
+
+    expect(album.title).to eq 'The Colour and the Shape'
+    expect(album.release_year).to eq '1997'
+    expect(album.artist_id).to eq '1'
+
+  end
+
+  it "returns the album the chloe..." do
+    repo = AlbumRepository.new
+    album = repo.find(2)
+
+    expect(album.title).to eq 'Chloe and the Next 20th Century'
+    expect(album.release_year).to eq '2022'
+    expect(album.artist_id).to eq '2'
+  end
+
 end
