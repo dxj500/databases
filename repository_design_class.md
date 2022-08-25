@@ -130,6 +130,15 @@ class AlbumRepository
     #returns a single album object
   end
 
+  # insert a new album
+
+  def create(album)
+    # INSERT INTO albums (title, release_year, artist_id) VALUES ($1, $2, $3);
+
+    # returns nothing, just inserts
+  end
+
+
 ​
 end
 ```
@@ -180,7 +189,18 @@ album = repo.find(2)
 album.title # => 'Chloe and the Next 20th Century'
 album.release_year # => 2022
 album.artist_id # => 2
-​
+
+# 5
+# Insert a new album
+repo = AlbumRepository.new
+
+album = Album.new
+album.title # => 'Pure Comedy'
+album.release_year # => 2017
+album.artist_id # => 2
+repo.create(album)
+
+all_albums = repo.all
 
 ​
 # Add more examples for each method

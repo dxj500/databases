@@ -33,13 +33,35 @@ RSpec.describe AlbumRepository do
 
   end
 
-  it "returns the album the chloe..." do
+  it "returns the album chloe..." do
     repo = AlbumRepository.new
     album = repo.find(2)
 
     expect(album.title).to eq 'Chloe and the Next 20th Century'
     expect(album.release_year).to eq '2022'
     expect(album.artist_id).to eq '2'
+  end
+
+  it "inserts a new album for artist 2" do
+    repo = AlbumRepository.new
+    new_album = Album.new
+
+    new_album.title = 'Pure Comedy'
+    new_album.release_year = '2017'
+    new_album.artist_id = '2'
+    
+    repo.create(new_album)
+
+    all_albums = repo.all
+    #•••••••••••••••
+    p all_albums
+
+    expect(all_albums).to include(
+      have_attributes(
+        title: new_album.title,
+        release_year: '2017'
+      )
+    )
   end
 
 end
